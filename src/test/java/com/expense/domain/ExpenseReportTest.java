@@ -1,7 +1,8 @@
 package com.expense.domain;
 
-import com.expense.domain.enums.ExpenseCategory;
-import com.expense.domain.enums.ExpenseType;
+import com.expense.domain.type.BreakfastExpenseType;
+import com.expense.domain.type.CarRentalExpenseType;
+import com.expense.domain.type.DinnerExpenseType;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,9 +14,9 @@ class ExpenseReportTest {
     @Test
     void shouldFormatExpensesWithOverLimitMarkersAndSummarizeTotals() {
         List<Expense> expenses = List.of(
-                new Expense(ExpenseType.DINNER, 6000),
-                new Expense(ExpenseType.BREAKFAST, 500),
-                new Expense(ExpenseType.CAR_RENTAL, 2000)
+                new Expense(new DinnerExpenseType(), 6000),
+                new Expense(new BreakfastExpenseType(), 500),
+                new Expense(new CarRentalExpenseType(), 2000)
         );
 
         ExpenseReport report = new ExpenseReport();
