@@ -4,18 +4,15 @@ import com.expense.domain.enums.ExpenseType;
 
 public class ExpenseFormatter {
     public String format(Expense expense) {
-        String name = switch (expense.getType()) {
-            case DINNER -> "Dinner";
-            case BREAKFAST -> "Breakfast";
-            case CAR_RENTAL -> "Car Rental";
+        ExpenseType type = expense.type();
+        int amount = expense.amount();
 
-        };
+        String marker = isMealOverLimit(type, amount) ? "X" : " ";
+        return type.getDisplayName() + "\t" + amount + "\t" + marker;
+    }
 
-        String marker = (expense.getType() == ExpenseType.DINNER && expense.getAmount() > 5000)
-                || (expense.getType() == ExpenseType.BREAKFAST && expense.getAmount() > 1000)
-                ? "X" : " ";
-
-        return name + "\t" + expense.getAmount() + "\t" + marker;
-
+    private boolean isMealOverLimit(ExpenseType type, int amount) {
+        return (type == ExpenseType.DINNER && amount > 5000)
+                || (type == ExpenseType.BREAKFAST && amount > 1000);
     }
 }

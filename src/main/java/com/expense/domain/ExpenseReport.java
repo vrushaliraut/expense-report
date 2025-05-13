@@ -1,6 +1,6 @@
 package com.expense.domain;
 
-import com.expense.domain.enums.ExpenseType;
+import com.expense.domain.enums.ExpenseCategory;
 
 import java.util.Date;
 import java.util.List;
@@ -16,12 +16,12 @@ public class ExpenseReport {
         sb.append("Expenses ").append(new Date()).append("\n");
 
         for (Expense expense : expenses) {
-            if (expense.getType() == ExpenseType.DINNER || expense.getType() == ExpenseType.BREAKFAST) {
-                mealExpenses += expense.getAmount();
+            if (expense.type().getCategory() == ExpenseCategory.MEAL) {
+                mealExpenses += expense.amount();
             }
 
             sb.append(formatter.format(expense)).append("\n");
-            total += expense.getAmount();
+            total += expense.amount();
         }
 
         sb.append("Meal expenses: ").append(mealExpenses).append("\n");
