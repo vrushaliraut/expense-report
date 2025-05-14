@@ -1,4 +1,6 @@
-package com.expense.domain;
+package com.expense.presentation;
+
+import com.expense.domain.Expense;
 
 public class ExpenseFormatter {
     public String format(Expense expense) {

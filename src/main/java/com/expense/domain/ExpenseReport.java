@@ -1,6 +1,7 @@
 package com.expense.domain;
 
 import com.expense.domain.enums.ExpenseCategory;
+import com.expense.presentation.ExpenseFormatter;
 
 import java.util.Date;
 import java.util.List;
